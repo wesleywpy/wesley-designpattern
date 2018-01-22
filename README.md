@@ -1,2 +1,1 @@
-# wesley-designpattern
-设计模式Demo
+## 设计模式Demo

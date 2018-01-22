@@ -28,8 +28,8 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>com.wesley.study</groupId>
-    <artifactId>wesley-design-patterns</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <artifactId>DesignPattern</artifactId>
+    <version>1.0.1-SNAPSHOT</version>
   </parent>
   <artifactId>proxy</artifactId>
 

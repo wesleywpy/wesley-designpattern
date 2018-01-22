@@ -15,7 +15,7 @@ public abstract class CaffeineBeverage {
         brew();
         pourInCup();
         /**
-         * 钩子函数
+         * hook函数
          */
         if(customerWantsCondiments()){
             addCondiments();
