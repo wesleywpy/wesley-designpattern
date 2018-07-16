@@ -3,18 +3,15 @@ package com.wesley.pattern.proxy;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
-import java.util.logging.MemoryHandler;
-
-import static java.lang.reflect.Proxy.*;
 
 /**
  * @author Created by Wesley on 2016/4/29.
  */
-public class DynamicProxy implements InvocationHandler {
+public class JDKDynamicProxy implements InvocationHandler {
 
     private Object source;
 
-    public DynamicProxy(Object source) {
+    public JDKDynamicProxy(Object source) {
         this.source = source;
     }
 
@@ -41,7 +38,7 @@ public class DynamicProxy implements InvocationHandler {
         TestInterface testInterface = (TestInterface)Proxy.newProxyInstance(
                 ClassLoader.getSystemClassLoader(),
                 new Class[]{TestInterface.class},
-                new DynamicProxy(new TestClass()));
+                new JDKDynamicProxy(new TestClass()));
         testInterface.method1();
         testInterface.method2();
         testInterface.method3();

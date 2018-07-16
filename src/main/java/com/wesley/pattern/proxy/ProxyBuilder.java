@@ -13,7 +13,6 @@ import java.util.Objects;
  */
 public class ProxyBuilder {
 
-
     /**
      * JDK动态代理一个对象
      * @param source 源对象
@@ -22,7 +21,7 @@ public class ProxyBuilder {
     public static Object createJDKProxyObject(Object source){
         Objects.requireNonNull(source);
         Objects.requireNonNull(source.getClass().getInterfaces());
-        return Proxy.newProxyInstance(source.getClass().getClassLoader(), source.getClass().getInterfaces(), new JdkDynamicProxy(source));
+        return Proxy.newProxyInstance(source.getClass().getClassLoader(), source.getClass().getInterfaces(), new JDKDynamicProxy(source));
     }
 
     public static Object createCglibProxyObject(Object source){
@@ -31,25 +30,6 @@ public class ProxyBuilder {
         enhancer.setSuperclass(source.getClass());
         enhancer.setCallback(new CglibDynamicProxy());
         return enhancer.create();
-    }
-
-
-    private static class JdkDynamicProxy implements InvocationHandler {
-        private Object source;
-
-        public JdkDynamicProxy(Object source) {
-            this.source = source;
-        }
-
-        /**
-         * @param proxy 代理对象
-         * @param method
-         * @param args
-         */
-        @Override
-        public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-            return method.invoke(source, args);
-        }
     }
 
     private static class CglibDynamicProxy implements MethodInterceptor{
