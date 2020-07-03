@@ -8,45 +8,34 @@ package com.wesley.pattern.template;
 public abstract class CaffeineBeverage {
 
     /**
+     * 模板方法
      * 在抽象类中，将算法逻辑以方法的形式体现，声明一些抽象方法给子类实现具体的逻辑，用钩子方法给予子类的灵活性
      */
     final void prepareRecipe(){
         boilWater();
         brew();
-        pourInCup();
-        /**
-         * hook函数
-         */
-        if(customerWantsCondiments()){
-            addCondiments();
-        }
+        addCondiments();
     }
 
     /**
-     * 是否需要加点调味品
-     * @return
-     */
-    boolean customerWantsCondiments(){
-        return true;
-    }
-
-    /**
+     * 具体方法
      * 烧水
      */
-    protected abstract void boilWater();
+    public void boilWater() {
+        System.out.println(" ... 模板方法里自带方法, 不会发生改变.");
+    }
 
     /**
+     * 抽象方法, 子类必须实现
      * 冲泡
      */
     protected abstract void brew();
 
     /**
-     * 倒进杯子
-     */
-    protected abstract void pourInCup();
-
-    /**
+     * 钩子方法, 子类可以根据情况实现
      * 加点调味品
      */
-    protected abstract void addCondiments();
+    protected void addCondiments() {
+
+    }
 }
